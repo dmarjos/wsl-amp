@@ -13,7 +13,10 @@ Windows 11 23H2 or Higher
 Open “Turn Windows Features on or off”
 You need to enable Windows Features before installing any Linux distributions on Windows.
   a) Click on ‘Start‘, search for ‘Turn Windows features on or off‘ –> Open
-  b) Scroll down and check "Windows Subsystem for Linux"
+  b) Scroll down and check
+    * "Windows Subsystem for Linux"
+    * Hyper V
+    * Virtual Machine Platform
   c) click "OK"
   d) restart your computer
 ```
