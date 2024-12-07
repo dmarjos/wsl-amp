@@ -37,6 +37,6 @@ wsl --install Ubuntu-22.04 --web-download
 ## Setting up required software
 Once your Linux distro is installed, log in and run
 ```
-apt-get update && apt-get upgrade
-apt-get install software-properties-common wslu
+sudo apt-get update && apt-get upgrade
+sudo apt-get install software-properties-common wslu
 ```
