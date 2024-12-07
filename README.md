@@ -28,7 +28,7 @@ wsl --update --web-download
 ```
 ## Installing a Linux distro
 
-Using PowerShell as administrator, install Ubuntu 22.04.5 LTS (or the Ubuntu/Debian based distro of your preference). You can use whatever other base distro you prefer, but you'll need to edit the scripts to use the proper package manager commands (apt for Ubuntu -used by me-, yum for RedHat, etc), or the default configuration files locations 
+Using PowerShell as normal user, install Ubuntu 22.04.5 LTS (or the Ubuntu/Debian based distro of your preference). You can use whatever other base distro you prefer, but you'll need to edit the scripts to use the proper package manager commands (apt for Ubuntu -used by me-, yum for RedHat, etc), or the default configuration files locations 
 
 ```
 wsl --install Ubuntu-22.04 --web-download
