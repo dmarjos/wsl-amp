@@ -23,6 +23,8 @@ if [ -z "${DEFAULT_WORKSPACE}" ]; then
 fi
 sed -i "/#set workspace/d" usr/local/bin/add-virtual-host.sh
 sed -i "s/#export WORKSPACE={DEFAULT_WORKSPACE}/#export WORKSPACE={DEFAULT_WORKSPACE}\nexport WORKSPACE=${DEFAULT_WORKSPACE} #set workspace/g" usr/local/bin/add-virtual-host.sh
+sed -i "/#set current user/d" usr/local/bin/add-virtual-host.sh
+sed -i "s/#export CURRENT_USER={CURRENT_USER}/#export CURRENT_USER={CURRENT_USER}\nexport CURRENT_USER=${CURRENT_USER} #set current user/g" usr/local/bin/add-virtual-host.sh
 
 echo -n "Please enter the MySQL global user name [super]: "
 read DB_SUPER_USER

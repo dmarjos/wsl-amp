@@ -5,6 +5,7 @@ export DOMAIN_NAME=`echo $1 | tr '[:upper:]' '[:lower:]'`
 export PHP_VERSION=""
 export USE_SSL=no
 #export WORKSPACE={DEFAULT_WORKSPACE}
+#export CURRENT_USER={CURRENT_USER}
 
 shift
 
