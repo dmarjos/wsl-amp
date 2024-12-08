@@ -29,7 +29,7 @@ if [ -z "${PHP_VERSION}" ]; then
     export PHP_VERSION=7.4
 fi
 
-install -o dmarjos -g www-data -d /var/www/${WORKSPACE}/${DOMAIN_NAME}
+install -o ${CURRENT_USER} -g www-data -d /var/www/${WORKSPACE}/${DOMAIN_NAME}
 
 export DOMAIN_ALIASES=$*
 
