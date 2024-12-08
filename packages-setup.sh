@@ -18,9 +18,10 @@ a2enmod proxy_fcgi proxy ssl rewrite headers  >> /home/${CURRENT_USER}/wsl-setup
 sudo update-alternatives --set php /usr/bin/php7.4 
 sudo update-alternatives --set phar /usr/bin/phar7.4
 sudo update-alternatives --set phar.phar /usr/bin/phar.phar7.4 
+EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-if [ -f composer-setup.php ]; do
+php -r "if (hash_file('sha384', 'composer-setup.php') === '$EXPECTED_CHECKSUM') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+if [ -f composer-setup.php ]; then do
 	php composer-setup.php
 	php -r "unlink('composer-setup.php');"
 fi
