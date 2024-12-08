@@ -4,7 +4,6 @@ A Windows Subsystem for Linux based webserver for development, using Apache, MyS
 ## Requirements:
 ```
 X64: 
-Windows 10 22H2
 Windows 11 23H2 or Higher
 ```
 
@@ -14,8 +13,7 @@ Open “Turn Windows Features on or off”
 You need to enable Windows Features before installing any Linux distributions on Windows.
   a) Click on ‘Start‘, search for ‘Turn Windows features on or off‘ –> Open
   b) Scroll down and check
-    * "Windows Subsystem for Linux"
-    * Hyper V
+    * Windows Subsystem for Linux
     * Virtual Machine Platform
   c) click "OK"
   d) restart your computer
@@ -40,6 +38,7 @@ wsl --install Ubuntu-22.04 --web-download
 ## Setting up required software
 Once your Linux distro is installed, log in and run
 ```
-sudo apt-get update && apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get install software-properties-common wslu
 ```
