@@ -69,10 +69,10 @@ EOF
 echo 'Installing required folders'
 echo '---------------------------'
 
-tar zcf ~/tmp-folder-install.tar.gz etc root usr var
+tar zcf ~/tmp-folder-install.tar.gz etc root usr
 cd /
 sudo tar zxf ~/tmp-folder-install.tar.gz
-rm -f ~/tmp-folder-install.tar.gz etc root usr var
+rm -f ~/tmp-folder-install.tar.gz
 
 cd -
 sudo add-virtual-host.sh local.development 7.4 ssl workspace ${DEFAULT_WORKSPACE}
@@ -97,7 +97,7 @@ sudo service mysql start
 
 sed "s/{SUPER_USER}/${DB_SUPER_USER}/g" ./init-mysql.sql > ./tmp-init-mysql.sql
 sed -i "s/{SUPER_PASSWORD}/${DB_SUPER_PASSWORD}/g" ./tmp-init-mysql.sql
-sudo mysql -u root < ./temp-init-mysql.sql
+sudo mysql -u root < ./tmp-init-mysql.sql
 
 echo "Cleaning temp files"
 echo '-------------------'
