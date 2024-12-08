@@ -21,7 +21,7 @@ sudo update-alternatives --set phar.phar /usr/bin/phar.phar7.4
 EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === '$EXPECTED_CHECKSUM') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-if [ -f composer-setup.php ]; then do
+if [ -f composer-setup.php ]; then 
 	php composer-setup.php
 	php -r "unlink('composer-setup.php');"
 fi
