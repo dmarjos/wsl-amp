@@ -94,6 +94,7 @@ sudo tar zxf ~/tmp-folder-install.tar.gz
 rm -f ~/tmp-folder-install.tar.gz
 
 cd -
+export SKIP_BANNER=1
 sudo add-virtual-host.sh local.development 7.4 ssl workspace ${DEFAULT_WORKSPACE}
 
 sudo service apache2 start
