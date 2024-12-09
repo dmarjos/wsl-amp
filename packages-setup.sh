@@ -24,4 +24,5 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '$EXPECTED_CHECKSUM') 
 if [ -f composer-setup.php ]; then 
 	php composer-setup.php
 	php -r "unlink('composer-setup.php');"
+	mv composer.phar /usr/local/bin/composer
 fi
