@@ -58,7 +58,7 @@ if [ -z "${KERNEL_VERSION}" ]; then
 	export WSL_VERSION=""
 	export KERNEL_VERSION=`wslsys | grep 'WSL Kernel'`
 	if [ ! -z "${KERNEL_VERSION}" ]; then 
-		if [ -z "`echo "" | grep "WSL2"`" ]; then
+		if [ -z "`echo "${KERNEL_VERSION}" | grep "WSL2"`" ]; then
 			export WSL_VERSION="1"
 		else
 			export WSL_VERSION="2"
