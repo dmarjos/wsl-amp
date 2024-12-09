@@ -66,7 +66,7 @@ if [ -z "${CRT_CITY_NAME}" ]; then
 	export CRT_CITY_NAME='Buenos Aires'
 fi
 
-echo -n "Please enter your organization name [Local Web Develompent]: "
+echo -n "Please enter your organization name [Local Web Development]: "
 read CRT_ORGANIZATION_NAME
 if [ -z "${CRT_ORGANIZATION_NAME}" ]; then
 	export CRT_ORGANIZATION_NAME='Local Web Development'
