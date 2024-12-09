@@ -8,6 +8,8 @@ echo '|                                                               |'
 echo '| Press CTRL+C to cancel this set up procedure                  |'
 echo '\***************************************************************/'
 read
+
+export CWD=`basedir $0`
 export CURRENT_USER=`whoami`
 export CURRENT_GROUP=`id -gn`
 
@@ -78,11 +80,11 @@ if [ -z "${CRT_PERSON_NAME}" ]; then
 	export CRT_PERSON_NAME='John Doe'
 fi
 
-sudo sed -i "s/{CRT_COUNTRY_CODE}/${CRT_COUNTRY_CODE}/g" root/openssl/decault-csr.conf
-sudo sed -i "s/{CRT_STATE_NAME}/${CRT_STATE_NAME}/g" root/openssl/decault-csr.conf
-sudo sed -i "s/{CRT_CITY_NAME}/${CRT_CITY_NAME}/g" root/openssl/decault-csr.conf
-sudo sed -i "s/{CRT_ORGANIZATION_NAME}/${CRT_ORGANIZATION_NAME}/g" root/openssl/decault-csr.conf
-sudo sed -i "s/{CRT_PERSON_NAME}/${CRT_PERSON_NAME}/g" root/openssl/decault-csr.conf
+sudo sed -i "s/{CRT_COUNTRY_CODE}/${CRT_COUNTRY_CODE}/g" ${CWD}/root/openssl/decault-csr.conf
+sudo sed -i "s/{CRT_STATE_NAME}/${CRT_STATE_NAME}/g" ${CWD}/root/openssl/decault-csr.conf
+sudo sed -i "s/{CRT_CITY_NAME}/${CRT_CITY_NAME}/g" ${CWD}/root/openssl/decault-csr.conf
+sudo sed -i "s/{CRT_ORGANIZATION_NAME}/${CRT_ORGANIZATION_NAME}/g" ${CWD}/root/openssl/decault-csr.conf
+sudo sed -i "s/{CRT_PERSON_NAME}/${CRT_PERSON_NAME}/g" ${CWD}/root/openssl/decault-csr.conf
 
 if [ ! -f "/etc/sudoers.d/${CURRENT_USER}" ]; then
 	echo 'Setting up SUDO access'
