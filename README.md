@@ -207,7 +207,7 @@ Using this script you'll be able to clone any GIT repository, using HTTPS or SSH
 clone-repo.sh {git_url} [main branch]
 ```
 
-Some repositories uses "master" as the main branch, other uses "main" or even any other custom branch names.You can specify in the script that main branch's name.
+Some repositories uses "master" as the main branch, other uses "main" or even any other custom branch names.You can specify in the script that main branch's name. If none is specified, the script will assume the main branch is called `master`
 
 For example, if you were to clone this repo you could use
 
