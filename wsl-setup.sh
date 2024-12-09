@@ -43,7 +43,7 @@ if [ ! -f /etc/sudoers.d/${CURRENT_USER} ]; then
 	echo '----------------------'
 	echo 'You will be asked to enter your password'
 	echo "${CURRENT_USER} ALL=(ALL) NOPASSWD:ALL" > /tmp/sudoers_file 
-	sudo install -u root -g root -m 0644 /tmp/sudoers_file /etc/sudoers.d/${CURRENT_USER}
+	sudo install -o root -g root -m 0644 /tmp/sudoers_file /etc/sudoers.d/${CURRENT_USER}
 	if [ "$?" == "1" ]; then
 		echo "Setting up SUDO access failed. Please verify your password"
 		exit
