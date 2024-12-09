@@ -9,7 +9,7 @@ echo '| Press CTRL+C to cancel this set up procedure                  |'
 echo '\***************************************************************/'
 read
 
-export CWD=`dirname $0`
+export CWD=`pwd`
 export CURRENT_USER=`whoami`
 export CURRENT_GROUP=`id -gn`
 
