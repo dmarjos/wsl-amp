@@ -52,16 +52,16 @@ fi
 
 sudo ./packages-setup.sh ${CURRENT_USER}
 
-WSL_VERSION="2"
-KERNEL_VERSION=`wslsys | grep 'Linux Kernel'`
+export WSL_VERSION="2"
+export KERNEL_VERSION=`wslsys | grep 'Linux Kernel'`
 if [ -z "${KERNEL_VERSION}" ]; then
-	WSL_VERSION=""
-	KERNEL_VERSION=`wslsys | grep 'WSL Kernel'`
+	export WSL_VERSION=""
+	export KERNEL_VERSION=`wslsys | grep 'WSL Kernel'`
 	if [ ! -z "${KERNEL_VERSION}" ]; then 
 		if [ -z "`echo "" | grep "WSL2"`" ]; then
-			WSL_VERSION="1"
+			export WSL_VERSION="1"
 		else
-			WSL_VERSION="2"
+			export WSL_VERSION="2"
 		fi
 	fi
 fi
