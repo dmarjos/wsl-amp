@@ -38,7 +38,7 @@ if [ -z "${DB_SUPER_PASSWORD}" ]; then
 	export DB_SUPER_PASSWORD=super
 fi
 
-if [ ! -f /etc/sudoers.d/${CURRENT_USER} ]; then
+if [ ! -f "/etc/sudoers.d/${CURRENT_USER}" ]; then
 	echo 'Setting up SUDO access'
 	echo '----------------------'
 	echo 'You will be asked to enter your password'
