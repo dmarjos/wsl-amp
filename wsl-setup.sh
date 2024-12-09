@@ -43,24 +43,13 @@ if [ ! -f /etc/sudoers.d/${CURRENT_USER} ]; then
 	echo '----------------------'
 	echo 'You will be asked to enter your password'
 	echo "${CURRENT_USER} ALL=(ALL) NOPASSWD:ALL" > /tmp/sudoers_file 
-	sudo cp /tmp/sudoers_file /etc/sudoers.d/${CURRENT_USER}
+	sudo install -u root -g root -m 0644 /tmp/sudoers_file /etc/sudoers.d/${CURRENT_USER}
 	if [ "$?" == "1" ]; then
 		echo "Setting up SUDO access failed. Please verify your password"
 		exit
 	fi
 fi
 
-if [ -z "${GIT_USER_NAME}" -o -z "${GIT_USER_EMAIL}" ]; then
-	echo "Please before running this script, run the following command"
-	echo ""
-	if [ -z "${GIT_USER_NAME}" ]; then
-	echo 'export GIT_USER_NAME="Your Name"'
-	fi
-	if [ -z "${GIT_USER_EMAIL}" ]; then
-	echo 'export GIT_USER_EMAIL="your.email@domain.com"'
-	fi
-	exit
-fi
 sudo ./packages-setup.sh ${CURRENT_USER}
 
 echo "Setting up container domains"

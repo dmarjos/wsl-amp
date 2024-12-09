@@ -35,14 +35,6 @@ Using PowerShell as normal user, install Ubuntu 22.04.5 LTS (or the Ubuntu/Debia
 wsl --install Ubuntu-22.04 --web-download
 ```
 
-## Setting up required software
-Once your Linux distro is installed, log in and run
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install software-properties-common wslu
-```
-
 ## Setting up your WSL-AMP web development environment (WDE)
 
 As your normal user, run this command:
