@@ -27,6 +27,7 @@ sed -i "s/#export WORKSPACE={DEFAULT_WORKSPACE}/#export WORKSPACE={DEFAULT_WORKS
 sed -i "/#set current user/d" usr/local/bin/add-virtual-host.sh
 sed -i "s/#export CURRENT_USER={CURRENT_USER}/#export CURRENT_USER={CURRENT_USER}\nexport CURRENT_USER=${CURRENT_USER} #set current user/g" usr/local/bin/add-virtual-host.sh
 
+echo ""
 echo "MySQL related information:"
 echo "--------------------------"
 echo ""
@@ -41,6 +42,7 @@ if [ -z "${DB_SUPER_PASSWORD}" ]; then
 	export DB_SUPER_PASSWORD=super
 fi
 
+echo ""
 echo "Self Signed SSL Certificate CSR related information:"
 echo "----------------------------------------------------"
 echo ""
