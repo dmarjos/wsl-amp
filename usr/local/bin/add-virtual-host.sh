@@ -105,3 +105,12 @@ for FPM in ${FPM_PACKAGES}; do
     service ${FPM} start
 done
 
+echo '/***************************************************************\'
+echo '| Windows Subsystem for Linux - WEB Development Container Setup |'
+echo '|                                                               |'
+echo '| Remember tu run an elevated PowerShell instance and call the  |'
+echo '| update-hosts.sh script                                        |'
+echo '|                                                               |'
+echo '| wsl -d ${WSL_DISTRO_NAME} -- update-hosts.sh                        |'
+echo '|                                                               |'
+echo '\***************************************************************/'

@@ -2,8 +2,8 @@
 echo '/***************************************************************\'
 echo '| Windows Subsystem for Linux - WEB Development Container Setup |'
 echo '|                                                               |'
-echo '| This script reset and remove any changes that you might have  |'
-echo '| on the current repository                                     |'
+echo '| This script resets and remove any changes that you might have |'
+echo '| on the current working copy                                   |'
 echo '|                                                               |'
 echo '\***************************************************************/'
 echo -n "Do you want to continue? (Please type 'Yes, continue'):"
