@@ -52,6 +52,26 @@ fi
 
 sudo ./packages-setup.sh ${CURRENT_USER}
 
+WSL_VERSION="2"
+KERNEL_VERSION=`wslsys | grep 'Linux Kernel'`
+if [ -z "${KERNEL_VERSION}" ]; then
+	WSL_VERSION=""
+	KERNEL_VERSION=`wslsys | grep 'WSL Kernel'`
+	if [ ! -z "${KERNEL_VERSION}" ]; then 
+		if [ -z "`echo "" | grep "WSL2"`" ]; then
+			WSL_VERSION="1"
+		else
+			WSL_VERSION="2"
+		fi
+	fi
+fi
+
+if [ -z "${WSL_VERSION}" ]; then 
+	echo "Unable to determine what version of WSL is installed. Aborting"
+	exit
+fi
+
+
 echo "Setting up container domains"
 echo '----------------------------'
 cat > ~/.wsl2hosts <<EOF
@@ -69,16 +89,6 @@ rm -f ~/tmp-folder-install.tar.gz
 
 cd -
 sudo add-virtual-host.sh local.development 7.4 ssl workspace ${DEFAULT_WORKSPACE}
-
-WSL_VERSION="2"
-KERNEL_VERSION=`wslsys | grep 'Linux Kernel'`
-if [ -z "${KERNEL_VERSION}" ]; then
-	WSL_VERSION=""
-	KERNEL_VERSION=`wslsys | grep 'WSL Kernel'`
-	if [ ! -z "${KERNEL_VERSION}" ]; then 
-		WSL_VERSION="1"
-	fi
-fi
 
 if [ "${WSL_VERSION}" == "1" ]; then 
 	sudo bash ./patch-apache2.sh
