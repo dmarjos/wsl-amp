@@ -111,6 +111,6 @@ echo '|                                                               |'
 echo '| Remember tu run an elevated PowerShell instance and call the  |'
 echo '| update-hosts.sh script                                        |'
 echo '|                                                               |'
-echo '| wsl -d ${WSL_DISTRO_NAME} -- update-hosts.sh                        |'
+echo "| wsl -d ${WSL_DISTRO_NAME} -- update-hosts.sh                        |"
 echo '|                                                               |'
 echo '\***************************************************************/'
