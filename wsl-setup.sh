@@ -66,13 +66,12 @@ if [ -z "${KERNEL_VERSION}" ]; then
 	fi
 fi
 
-echo "WSL Version: ${WSL_VERSION}"
-exit
-
 if [ -z "${WSL_VERSION}" ]; then 
 	echo "Unable to determine what version of WSL is installed. Aborting"
 	exit
 fi
+
+echo "Installed WSL Version: ${WSL_VERSION}"
 
 if [ "${WSL_VERSION}" == "1" ]; then 
 	sudo ./patch-apache2.sh
