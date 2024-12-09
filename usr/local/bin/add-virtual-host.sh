@@ -31,6 +31,9 @@ fi
 
 install -o ${CURRENT_USER} -g www-data -d /var/www/${WORKSPACE}/${DOMAIN_NAME}
 
+sed -i "/${DOMAIN_NAME}/d" /home/${CURRENT_USER}/.wsl2hosts
+echo ${DOMAIN_NAME} >> /home/${CURRENT_USER}/.wsl2hosts
+
 export DOMAIN_ALIASES=$*
 
 cd /etc/apache2/sites-available
@@ -40,6 +43,10 @@ sed -i "s/{WORKSPACE}/${WORKSPACE}/g" ${DOMAIN_NAME}.conf
 sed -i "s/{PHP_VERSION}/${PHP_VERSION}/g" ${DOMAIN_NAME}.conf
 if [ ! -z "${DOMAIN_ALIASES}" ]; then
     sed -i "s/{DOMAIN_ALIASES}/${DOMAIN_ALIASES}/g" ${DOMAIN_NAME}.conf
+	for DN in ${DOMAIN_ALIASES}; do
+		sed -i "/${DN}/d" /home/${CURRENT_USER}/.wsl2hosts
+		echo ${DN} >> /home/${CURRENT_USER}/.wsl2hosts
+	done
 else
     sed -i "/{DOMAIN_ALIASES}/d" ${DOMAIN_NAME}.conf
 fi

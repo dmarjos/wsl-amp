@@ -9,6 +9,7 @@ echo '| Press CTRL+C to cancel this set up procedure                  |'
 echo '\***************************************************************/'
 read
 export CURRENT_USER=`whoami`
+export CURRENT_GROUP=`id -gn`
 
 > ~/wsl-setup.log
 if [ "${CURRENT_USER}" == "root" ]; then
@@ -71,6 +72,7 @@ EOF
 echo 'Installing required folders'
 echo '---------------------------'
 
+sudo chown ${CURRENT_USER}:${CURRENT_GROUP} usr/local/bin/*.sh
 tar zcf ~/tmp-folder-install.tar.gz etc root usr
 cd /
 sudo tar zxf ~/tmp-folder-install.tar.gz

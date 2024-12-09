@@ -20,4 +20,4 @@ if [ -z "${NEW_BRANCH}" ]; then
     exit 0
 fi
 
-git checkout ${NEW_BRANCH} && git config devel.currentbranch ${NEW_BRANCH} && git push origin $DEVEL_BRANCH
+git checkout ${NEW_BRANCH} && git config devel.currentbranch ${NEW_BRANCH} && git pull origin ${NEW_BRANCH}
