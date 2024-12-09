@@ -27,6 +27,9 @@ sed -i "s/#export WORKSPACE={DEFAULT_WORKSPACE}/#export WORKSPACE={DEFAULT_WORKS
 sed -i "/#set current user/d" usr/local/bin/add-virtual-host.sh
 sed -i "s/#export CURRENT_USER={CURRENT_USER}/#export CURRENT_USER={CURRENT_USER}\nexport CURRENT_USER=${CURRENT_USER} #set current user/g" usr/local/bin/add-virtual-host.sh
 
+echo "MySQL related information:"
+echo "--------------------------"
+echo ""
 echo -n "Please enter the MySQL global user name [super]: "
 read DB_SUPER_USER
 if [ -z "${DB_SUPER_USER}" ]; then
@@ -37,6 +40,47 @@ read DB_SUPER_PASSWORD
 if [ -z "${DB_SUPER_PASSWORD}" ]; then
 	export DB_SUPER_PASSWORD=super
 fi
+
+echo "Self Signed SSL Certificate CSR related information:"
+echo "----------------------------------------------------"
+echo ""
+echo -n "Please enter your country code [AR]: "
+read CRT_COUNTRY_CODE
+if [ -z "${CRT_COUNTRY_CODE}" ]; then
+	export CRT_COUNTRY_CODE=AR
+else 
+	export CRT_COUNTRY_CODE=`echo ${CRT_COUNTRY_CODE} | tr '[:lower:]' '[:upper:]'`
+fi
+
+echo -n "Please enter your state name [Buenos Aires]: "
+read CRT_STATE_NAME
+if [ -z "${CRT_STATE_NAME}" ]; then
+	export CRT_STATE_NAME='Buenos Aires'
+fi
+
+echo -n "Please enter your city name [Buenos Aires]: "
+read CRT_CITY_NAME
+if [ -z "${CRT_CITY_NAME}" ]; then
+	export CRT_CITY_NAME='Buenos Aires'
+fi
+
+echo -n "Please enter your organization name [Local Web Develompent]: "
+read CRT_ORGANIZATION_NAME
+if [ -z "${CRT_ORGANIZATION_NAME}" ]; then
+	export CRT_ORGANIZATION_NAME='Local Web Develompent'
+fi
+
+echo -n "Please enter your name [John Doe]: "
+read CRT_PERSON_NAME
+if [ -z "${CRT_PERSON_NAME}" ]; then
+	export CRT_PERSON_NAME='John Doe'
+fi
+
+sed -i "s/{CRT_COUNTRY_CODE}/${CRT_COUNTRY_CODE}/g" root/openssl/decault-csr.conf
+sed -i "s/{CRT_STATE_NAME}/${CRT_STATE_NAME}/g" root/openssl/decault-csr.conf
+sed -i "s/{CRT_CITY_NAME}/${CRT_CITY_NAME}/g" root/openssl/decault-csr.conf
+sed -i "s/{CRT_ORGANIZATION_NAME}/${CRT_ORGANIZATION_NAME}/g" root/openssl/decault-csr.conf
+sed -i "s/{CRT_PERSON_NAME}/${CRT_PERSON_NAME}/g" root/openssl/decault-csr.conf
 
 if [ ! -f "/etc/sudoers.d/${CURRENT_USER}" ]; then
 	echo 'Setting up SUDO access'
@@ -94,7 +138,6 @@ sudo tar zxf ~/tmp-folder-install.tar.gz
 rm -f ~/tmp-folder-install.tar.gz
 
 cd -
-export SKIP_BANNER=1
 sudo add-virtual-host.sh local.development 7.4 ssl workspace ${DEFAULT_WORKSPACE}
 
 sudo service apache2 start
