@@ -12,6 +12,8 @@ read
 export CWD=`pwd`
 export CURRENT_USER=`whoami`
 export CURRENT_GROUP=`id -gn`
+echo "${CWD}/root/openssl/decault-csr.conf"
+exit
 
 > ~/wsl-setup.log
 if [ "${CURRENT_USER}" == "root" ]; then
