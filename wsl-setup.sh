@@ -69,7 +69,7 @@ fi
 echo -n "Please enter your organization name [Local Web Develompent]: "
 read CRT_ORGANIZATION_NAME
 if [ -z "${CRT_ORGANIZATION_NAME}" ]; then
-	export CRT_ORGANIZATION_NAME='Local Web Develompent'
+	export CRT_ORGANIZATION_NAME='Local Web Development'
 fi
 
 echo -n "Please enter your name [John Doe]: "
