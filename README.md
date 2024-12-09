@@ -333,13 +333,13 @@ git push origin ${DEVEL_BRANCH}
 This script allows to completely dimiss any changes that you might have done on the current branch for the current working copy. It's a dangerous script, so be careful. You can lose months of work. Why this script exist? It is useful for me some times, when working with several working copies for the same project, and need to check the different development phases like stage, UAT or production. So, a warning will be displayed and you'll be given the option to continue. 
 
 ```
-reset-bransh.sh
+reset-branch.sh
 
 /***************************************************************\
 | Windows Subsystem for Linux - WEB Development Container Setup |
 |                                                               |
 | This script resets and remove any changes that you might have |
-| on the current repository                                     |
+| on the current working copy                                   |
 |                                                               |
 \***************************************************************/
 Do you want to continue? (Please type 'Yes, continue'):
