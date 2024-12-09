@@ -71,6 +71,10 @@ if [ -z "${WSL_VERSION}" ]; then
 	exit
 fi
 
+if [ "${WSL_VERSION}" == "1" ]; then 
+	sudo ./patch-apache2.sh
+fi
+
 
 echo "Setting up container domains"
 echo '----------------------------'
@@ -90,10 +94,6 @@ rm -f ~/tmp-folder-install.tar.gz
 cd -
 sudo add-virtual-host.sh local.development 7.4 ssl workspace ${DEFAULT_WORKSPACE}
 
-if [ "${WSL_VERSION}" == "1" ]; then 
-	sudo bash ./patch-apache2.sh
-fi
-
 sudo service apache2 start
 sudo service php7.4-fpm start 
 sudo service mysql start 
@@ -105,5 +105,5 @@ sudo mysql -u root < ./tmp-init-mysql.sql
 echo "Cleaning temp files"
 echo '-------------------'
 rm -f /tmp/sudoers_file
-rm -f ./temp-init-mysql.sql
+rm -f ./tmp-init-mysql.sql
 
